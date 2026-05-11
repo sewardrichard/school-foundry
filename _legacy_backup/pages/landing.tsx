@@ -100,32 +100,50 @@ export default function Landing() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-[#07090E] text-foreground font-sans overflow-x-hidden selection:bg-primary/30 selection:text-white">
 
       {/* ── Navigation ─────────────────────────────────────── */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-lg border-b border-border/40 py-3' : 'bg-transparent py-5'}`}>
-        <div className="container mx-auto px-5 flex items-center justify-between">
+      <nav 
+        role="navigation"
+        aria-label="Main Navigation"
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-white/5 py-3' : 'bg-transparent py-6'}`}
+      >
+        <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <img src="/school-foundry/logo.svg" alt="SchoolFoundry" className="h-10 w-auto" />
-            <span className={`font-bold text-xl tracking-tight ${scrolled ? 'text-foreground' : 'text-white'}`}>School<span className={`font-normal ${scrolled ? 'text-foreground' : 'text-white'}`}>Foundry</span></span>
+          <a href="#" className="flex items-center gap-3 group" aria-label="SchoolFoundry Home">
+            <div className="relative">
+              <img src="/logo.svg" alt="" className="h-9 w-auto relative z-10 transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            <span className={`font-bold text-xl tracking-tight transition-colors duration-300 ${scrolled ? 'text-white' : 'text-white'}`}>
+              School<span className="font-light text-primary group-hover:text-primary/80 transition-colors">Foundry</span>
+            </span>
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <div className="hidden md:flex items-center gap-10 text-[13px] uppercase tracking-widest font-semibold">
             {NAV_LINKS.map(({ label, href }) => (
-              <a key={label} href={href} className={`transition-colors duration-300 hover:text-primary ${scrolled ? 'text-foreground' : 'text-white/90'}`}>{label}</a>
+              <a 
+                key={label} 
+                href={href} 
+                className={`relative transition-colors duration-300 hover:text-primary ${scrolled ? 'text-white/70' : 'text-white/90'} after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full`}
+              >
+                {label}
+              </a>
             ))}
-            <a href="#contact" className="bg-primary text-white px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]">
-              Request a Demo
+            <a 
+              href="#contact" 
+              className="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/90 transition-all shadow-[0_8px_20px_-6px_rgba(249,115,22,0.4)] hover:shadow-[0_12px_25px_-4px_rgba(249,115,22,0.6)] hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Request Demo
             </a>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-foreground hover:bg-border/30' : 'text-white hover:bg-white/10'}`}
-            aria-label="Toggle menu"
+            className={`md:hidden p-2.5 rounded-xl transition-all ${scrolled ? 'text-white bg-white/5 hover:bg-white/10' : 'text-white hover:bg-white/10'}`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -135,212 +153,180 @@ export default function Landing() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden bg-background/98 backdrop-blur-xl border-b border-border/40 px-5 py-6 flex flex-col gap-1"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-[#0A0D14]/98 backdrop-blur-2xl border-b border-white/5 overflow-hidden"
             >
-              {NAV_LINKS.map(({ label, href }) => (
+              <div className="px-6 py-8 flex flex-col gap-2">
+                {NAV_LINKS.map(({ label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    onClick={closeMenu}
+                    className="text-white/70 hover:text-primary font-bold py-4 px-4 rounded-2xl hover:bg-white/5 transition-all text-lg border border-transparent hover:border-white/5"
+                  >
+                    {label}
+                  </a>
+                ))}
                 <a
-                  key={label}
-                  href={href}
+                  href="#contact"
                   onClick={closeMenu}
-                  className="text-foreground/80 hover:text-primary font-medium py-3 px-3 rounded-xl hover:bg-primary/5 transition-colors text-base"
+                  className="mt-6 bg-primary text-white px-6 py-4 rounded-2xl font-bold text-center hover:bg-primary/90 transition-all shadow-lg"
                 >
-                  {label}
+                  Request a Demo
                 </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={closeMenu}
-                className="mt-3 bg-primary text-white px-5 py-3 rounded-full font-bold text-center hover:bg-primary/90 transition-all"
-              >
-                Request a Demo
-              </a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
 
       {/* ── Hero ───────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0D14] pt-20">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(249,115,22,0.13),transparent_70%)] pointer-events-none" />
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(249,115,22,0.05),transparent_70%)] pointer-events-none" />
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-[#07090E] pt-20">
+        <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(249,115,22,0.12),transparent_70%)] pointer-events-none blur-3xl" />
+        <div className="absolute left-[-5%] bottom-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(249,115,22,0.04),transparent_70%)] pointer-events-none blur-3xl" />
 
-        <div className="container mx-auto px-5 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 min-h-[calc(100vh-5rem)]">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12">
 
             {/* Left copy */}
             <motion.div initial="hidden" animate="visible" variants={STAGGER} className="flex flex-col justify-center">
-              <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-7 font-mono text-xs sm:text-sm w-fit">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0" />
-                Complete SMS for the African Market.
+              <motion.div variants={FADE_UP} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary mb-8 font-mono text-[10px] sm:text-xs uppercase tracking-widest w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping flex-shrink-0" />
+                <span>Next-Gen School Operating System</span>
               </motion.div>
 
-              <motion.h1 variants={FADE_UP} className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter text-white mb-5 leading-[1.05]">
+              <motion.h1 variants={FADE_UP} className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight text-white mb-6 leading-[0.95]">
                 {activeVersion === 'offline' ? 'Kicking Paper Out of ' : 'Connected '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-                  School Management
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-orange-400 to-orange-600">
+                  School Ops
                 </span>
               </motion.h1>
 
-              <motion.p variants={FADE_UP} className="text-base sm:text-lg text-gray-400 mb-4 max-w-xl leading-relaxed">
+              <motion.p variants={FADE_UP} className="text-lg sm:text-xl text-white/50 mb-10 max-w-xl leading-relaxed font-medium">
                 {activeVersion === 'offline' 
-                  ? "Move from receipt books to a robust desktop SMS that works 100% offline. No internet required, just pure efficiency for your school office."
-                  : "Experience the full power of a cloud-based SMS. Access your school records from any device, anywhere in the world, with real-time sync."}
+                  ? "Move from dusty receipt books to a robust desktop environment that works 100% offline. No internet required—just raw productivity."
+                  : "Experience the full power of a cloud-native SMS. Real-time sync, parent intelligence, and global access from any device."}
               </motion.p>
 
-              <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 mb-9 text-sm text-gray-500">
-                <Cpu className="w-4 h-4 text-primary flex-shrink-0" />
-                <span>One-off Offline Bundle + Future Cloud Roadmap.</span>
-              </motion.div>
-
-              <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-3 mb-12">
+              <motion.div variants={FADE_UP} className="flex flex-wrap gap-4 mb-14">
                 <motion.a
                   href="#contact"
-                  data-testid="link-hero-cta"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="px-7 py-4 bg-primary text-white rounded-full font-bold text-base sm:text-lg hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(249,115,22,0.4)] text-center"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all shadow-[0_20px_40px_-12px_rgba(249,115,22,0.4)] text-center min-w-[200px]"
                 >
-                  Request a Demo
+                  Request Demo
                 </motion.a>
                 <motion.a
                   href="#product-choice"
-                  data-testid="link-hero-explore"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="px-7 py-4 bg-white/5 hover:bg-white/10 text-white rounded-full font-bold text-base sm:text-lg border border-white/10 transition-all text-center"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold text-lg border border-white/10 transition-all text-center min-w-[200px] backdrop-blur-md"
                 >
-                  Choose Your Version
+                  Explore Versions
                 </motion.a>
               </motion.div>
 
-              <motion.div variants={FADE_UP} className="grid grid-cols-3 gap-4 pt-7 border-t border-white/10">
+              <motion.div variants={FADE_UP} className="grid grid-cols-3 gap-8 pt-10 border-t border-white/5">
                 {[
-                  ['90%', 'Less Admin Time'],
-                  ['One-Click', 'Backup'],
-                  ['Instant', 'Statements'],
+                  ['90%', 'Less Paper'],
+                  ['1-Click', 'Backup'],
+                  ['Auto', 'Reports'],
                 ].map(([stat, label], i) => (
                   <div key={i} className="flex flex-col">
-                    <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-mono">{stat}</span>
-                    <span className="text-xs text-gray-500 mt-1">{label}</span>
+                    <span className="text-2xl sm:text-3xl font-bold text-white font-mono tracking-tighter">{stat}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold mt-2">{label}</span>
                   </div>
                 ))}
               </motion.div>
             </motion.div>
 
-            {/* Right sphere — desktop only */}
+            {/* Right sphere */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative hidden lg:flex items-center justify-center h-[580px]"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative hidden lg:flex items-center justify-center h-[650px]"
             >
-              <div className="w-[480px] h-[480px]">
+              <div className="w-[520px] h-[520px] relative">
+                <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full animate-pulse" />
                 <SphereCanvas />
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: -16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="absolute top-6 left-0 bg-white/6 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-xl cursor-default"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <ReceiptText className="w-4 h-4 text-primary" />
-                  <p className="text-primary font-bold font-mono text-sm">Record + Print</p>
-                </div>
-                <p className="text-gray-400 text-xs">Payment recorded. Receipt printed.</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.1, duration: 0.6 }}
-                whileHover={{ scale: 1.05, x: 2 }}
-                className="absolute top-[28%] right-0 bg-white/6 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-xl cursor-default"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <FileText className="w-4 h-4 text-primary" />
-                  <p className="text-primary font-bold font-mono text-sm">Statements</p>
-                </div>
-                <p className="text-gray-400 text-xs">Student, grade and school level</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.3, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: 2 }}
-                className="absolute bottom-10 left-2 bg-primary/10 backdrop-blur-md border border-primary/20 rounded-2xl px-5 py-4 shadow-xl cursor-default"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <Cpu className="w-4 h-4 text-primary" />
-                  <p className="text-primary font-bold font-mono text-sm">Lightweight</p>
-                </div>
-                <p className="text-gray-400 text-xs">Works on any PC that runs Chrome</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
-                whileHover={{ scale: 1.05, x: 2 }}
-                className="absolute bottom-[28%] right-0 bg-white/6 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-xl cursor-default"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <Database className="w-4 h-4 text-primary" />
-                  <p className="text-primary font-bold font-mono text-sm">Full Data Control</p>
-                </div>
-                <p className="text-gray-400 text-xs">Offline. Yours. Always backed up.</p>
-              </motion.div>
+              {/* Floating Cards with refined styles */}
+              {[
+                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-10 -left-10', delay: 1.0 },
+                { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-[30%] -right-4', delay: 1.2 },
+                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-16 -left-6', delay: 1.4 },
+                { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'bottom-[35%] -right-8', delay: 1.6 },
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: card.delay, duration: 0.8, ease: "easeOut" }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className={`absolute ${card.pos} bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-2xl px-6 py-5 shadow-2xl cursor-default group overflow-hidden`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="flex items-center gap-3 mb-1.5 relative z-10">
+                    <card.icon className="w-4 h-4 text-primary" />
+                    <p className="text-white font-bold tracking-tight text-sm uppercase">{card.title}</p>
+                  </div>
+                  <p className="text-white/40 text-xs font-medium relative z-10">{card.text}</p>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ── What is an SMS? ────────────────────────────────── */}
-      <section id="what-is-sms" className="py-20 sm:py-32 bg-background border-y border-border/10">
-        <div className="container mx-auto px-5">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <motion.span initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP} className="text-primary font-mono text-sm font-bold uppercase tracking-wider">The Foundation of Modern Schools</motion.span>
-            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP} className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6">What is a <span className="text-primary">School Management System?</span></motion.h2>
-            <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP} className="text-gray-600 text-lg leading-relaxed">
-              An SMS is the digital heart of a school. It replaces paper registers, receipt books, and physical filing cabinets with a unified database. It automates administrative tasks, providing real-time insights into your school's health.
-            </motion.p>
+      <section id="what-is-sms" className="py-24 sm:py-36 bg-[#07090E] relative">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={FADE_UP}>
+              <span className="text-primary font-mono text-xs font-bold uppercase tracking-[0.3em] mb-4 block">The OS for Modern Education</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-4 mb-8 leading-tight tracking-tighter">
+                What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">SchoolFoundry?</span>
+              </h2>
+              <p className="text-white/50 text-xl leading-relaxed font-medium max-w-3xl mx-auto">
+                We aren't just a billing tool. SchoolFoundry is a complete operating system for your school. From the first enrollment to the final grade report, we handle the data so you can focus on the students.
+              </p>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
                 icon: Users,
-                title: 'Student Information',
-                desc: 'Digital records for every student, including enrollment dates, grade history, and personal details.'
+                title: 'Lifecycle Management',
+                desc: 'Digital identity for every student. Track progress, attendance, and history from Grade 1 to Graduation.'
               },
               {
                 icon: ReceiptText,
-                title: 'Financial Control',
-                desc: 'Track every school fee payment, balance, and discount. Eliminate manual counting and receipt books.'
+                title: 'Financial Integrity',
+                desc: 'Eliminate receipt book fraud. Track every cent with automated ledger matching and instant audit trails.'
               },
               {
                 icon: BarChart3,
-                title: 'Reporting & Analytics',
-                desc: 'Generate instant grade-wise or school-wide reports to see exactly where your finances stand.'
+                title: 'Operational Intelligence',
+                desc: 'Real-time dashboards for Principals. Know your school’s financial and academic health in one click.'
               }
             ].map((feature, i) => (
               <motion.div
                 key={i}
                 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={SCALE_IN}
-                className="bg-white/5 border border-border rounded-3xl p-8 hover:border-primary/30 transition-colors group"
+                className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-10 hover:border-primary/40 transition-all duration-500 group relative overflow-hidden"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                  <feature.icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
+                <h3 className="text-2xl font-bold mb-4 text-white relative z-10 tracking-tight">{feature.title}</h3>
+                <p className="text-white/40 text-base leading-relaxed font-medium relative z-10">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -367,68 +353,70 @@ export default function Landing() {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="offline" className="space-y-20">
+            <TabsContent value="offline" className="space-y-24 outline-none">
               {/* Full Offline Landing Page Fragment */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 mb-6 font-mono text-xs uppercase tracking-widest">
-                    Ready to Deploy
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8 font-mono text-[10px] uppercase tracking-widest">
+                    The Deployment King
                   </div>
-                  <h3 className="text-4xl font-bold mb-6 leading-tight">Zero Internet. <br/>Zero Excuses.</h3>
-                  <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                    Designed for schools where internet is a luxury, not a guarantee. SchoolFoundry Offline lives entirely on your office computer. It captures the speed of digital without the risk of the cloud.
+                  <h3 className="text-4xl sm:text-5xl font-black mb-8 text-white leading-[1.1]">Zero Internet. <br/>Zero Excuses.</h3>
+                  <p className="text-white/50 text-xl leading-relaxed mb-10 font-medium">
+                    Designed for schools where the cloud is a dream, but efficiency is a necessity. SchoolFoundry Offline is a standalone powerhouse that captures the speed of digital without the fragility of the web.
                   </p>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
                     {[
-                      { icon: Printer, title: 'Hardware Included', text: 'Comes with a thermal printer & 10 paper rolls.' },
-                      { icon: HardDrive, title: 'Local Storage', text: 'All your data stays in your office, under your control.' },
-                      { icon: Zap, title: 'Instant Receipts', text: 'Print professional receipts in under 3 seconds.' },
-                      { icon: ListOrdered, title: 'Simple Rosters', text: 'Manage students and grades with ease.' }
+                      { icon: Printer, title: 'Hardware Included', text: 'Industrial thermal printer & starter rolls.' },
+                      { icon: HardDrive, title: 'Local Vault', text: 'Encryption-at-rest on your office PC.' },
+                      { icon: Zap, title: 'Instant Receipts', text: 'Professional printing in under 2s.' },
+                      { icon: ListOrdered, title: 'SADC Ready', text: 'Multi-currency support (USD/ZMW/ZWG).' }
                     ].map((item, idx) => (
-                      <div key={idx} className="flex gap-3">
-                        <item.icon className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div key={idx} className="flex gap-4 group">
+                        <div className="p-2.5 rounded-xl bg-white/5 group-hover:bg-primary/10 transition-colors duration-300">
+                          <item.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                        </div>
                         <div>
-                          <p className="font-bold text-sm">{item.title}</p>
-                          <p className="text-xs text-gray-500">{item.text}</p>
+                          <p className="font-bold text-white text-sm mb-0.5">{item.title}</p>
+                          <p className="text-xs text-white/40 leading-relaxed">{item.text}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <Button size="lg" className="rounded-full px-10 h-14 text-lg font-bold" asChild>
-                    <a href="#contact">Get Offline Demo</a>
+                  <Button size="lg" className="rounded-2xl px-12 h-16 text-lg font-bold shadow-2xl shadow-primary/20" asChild>
+                    <a href="#contact">Get Deployment Quote</a>
                   </Button>
                 </motion.div>
 
                 <div className="relative">
-                  <div className="bg-white/5 border border-white/10 rounded-[2.5rem] p-10 overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Printer className="w-64 h-64" />
+                  <div className="bg-white/[0.03] border border-white/5 rounded-[3rem] p-12 overflow-hidden group backdrop-blur-3xl">
+                    <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity duration-700">
+                      <Printer className="w-80 h-80" />
                     </div>
-                    <h4 className="text-2xl font-bold mb-8">What's in the Box?</h4>
-                    <div className="space-y-8 relative z-10">
-                      <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                    <h4 className="text-3xl font-bold mb-10 text-white">The Deployment Bundle</h4>
+                    <div className="space-y-10 relative z-10">
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 shadow-lg shadow-primary/20">1</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Thermal Receipt Printer</p>
-                          <p className="text-sm text-gray-400">Industry standard high-speed thermal printing. No ink cartridges required—ever.</p>
+                          <p className="text-xl font-bold mb-1.5 text-white">High-Speed Thermal Printer</p>
+                          <p className="text-base text-white/40 leading-relaxed">Industrial grade. Zero ink required. Built for 24/7 high-volume receipting.</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center font-bold text-xl flex-shrink-0">10</div>
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center font-bold text-2xl flex-shrink-0 shadow-lg shadow-primary/20">10</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Receipt Paper Rolls</p>
-                          <p className="text-sm text-gray-400">Included to cover your first few months of operations. Refills available at any local paper shop.</p>
+                          <p className="text-xl font-bold mb-1.5 text-white">Starter Paper Rolls</p>
+                          <p className="text-base text-white/40 leading-relaxed">Everything you need to start operating on Day 1. Standard 80mm refills.</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center font-bold text-xl flex-shrink-0">
-                          <CheckCircle className="w-6 h-6 text-primary" />
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 shadow-xl">
+                          <CheckCircle className="w-7 h-7 text-primary" />
                         </div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Lifetime Software License</p>
-                          <p className="text-sm text-gray-400">One-off payment. The software is yours forever. No monthly subscriptions or hidden fees.</p>
+                          <p className="text-xl font-bold mb-1.5 text-white">Lifetime Core License</p>
+                          <p className="text-base text-white/40 leading-relaxed">One-time payment. No hidden monthly fees. You own your school's data forever.</p>
                         </div>
                       </div>
                     </div>
@@ -437,104 +425,99 @@ export default function Landing() {
               </div>
 
               {/* Offline Features Grid (Condensed) */}
-              <div className="pt-20 border-t border-white/5">
-                <div className="text-center mb-12">
-                  <h4 className="text-2xl font-bold">Comprehensive Offline Features</h4>
+              <div className="pt-24 border-t border-white/5">
+                <div className="text-center mb-16">
+                  <h4 className="text-3xl font-bold text-white">Comprehensive School Ops</h4>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                   {[
-                    { icon: Users, title: 'Student Management' },
-                    { icon: ReceiptText, title: 'Fast Receipting' },
-                    { icon: FileText, title: 'Account Statements' },
-                    { icon: XCircle, title: 'Defaulter Lists' },
-                    { icon: CheckCircle, title: 'Cleared Lists' },
-                    { icon: Activity, title: 'Activity Logs' },
-                    { icon: Settings, title: 'Custom Fee Tiers' },
-                    { icon: Database, title: 'Easy Backup' },
+                    { icon: Users, title: 'Student Files' },
+                    { icon: ReceiptText, title: 'Fee Accounting' },
+                    { icon: FileText, title: 'Bulk Statements' },
+                    { icon: XCircle, title: 'Defaulter Intel' },
+                    { icon: CheckCircle, title: 'Cleared Logs' },
+                    { icon: Activity, title: 'Staff Audit' },
+                    { icon: Settings, title: 'Dynamic Tiers' },
+                    { icon: Database, title: 'Secure Backup' },
                   ].map((f, i) => (
-                    <div key={i} className="bg-white/5 border border-white/5 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors">
-                      <f.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                      <p className="font-bold text-sm">{f.title}</p>
+                    <div key={i} className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 text-center hover:bg-white/5 transition-all duration-300 group">
+                      <f.icon className="w-10 h-10 text-primary mx-auto mb-5 group-hover:scale-110 transition-transform" />
+                      <p className="font-bold text-sm text-white/80">{f.title}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </TabsContent>
 
-            <TabsContent value="online" className="space-y-20">
+            <TabsContent value="online" className="space-y-24 outline-none">
               {/* Full Online Landing Page Fragment */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 font-mono text-xs uppercase tracking-widest">
-                    Next Generation
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8 font-mono text-[10px] uppercase tracking-widest">
+                    The Cloud Horizon
                   </div>
-                  <h3 className="text-4xl font-bold mb-6 leading-tight">Your School, <br/>On Any Device.</h3>
-                  <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                    When you are ready for the cloud, SchoolFoundry Online unlocks the full potential of your SMS. Real-time data sync, parent engagement portals, and automated reporting accessible from any browser.
+                  <h3 className="text-4xl sm:text-5xl font-black mb-8 text-white leading-[1.1]">Full School Intelligence, <br/>From Anywhere.</h3>
+                  <p className="text-white/50 text-xl leading-relaxed mb-10 font-medium">
+                    When you're ready to bridge the gap, SchoolFoundry Online unlocks the power of a fully connected campus. Multi-user coordination, automated parent engagement, and data-driven insights.
                   </p>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
                     {[
-                      { icon: Globe, title: 'Web Access', text: 'Secure login from mobile, tablet, or laptop.' },
-                      { icon: Mail, title: 'Parent Alerts', text: 'Automated SMS/Email notifications for payments.' },
-                      { icon: UserPlus, title: 'Parent Portal', text: 'Self-service statement downloads for parents.' },
-                      { icon: Database, title: 'Cloud Sync', text: 'Automatic offsite backups and multi-user sync.' }
+                      { icon: Globe, title: 'Multi-User Sync', text: 'Coordination between Bursar, Principal, and Staff.' },
+                      { icon: Mail, title: 'WhatsApp Alerts', text: 'Instant PDF statements sent to parents automatically.' },
+                      { icon: UserPlus, title: 'Parent Intelligence', text: 'Self-service balance checks and reports.' },
+                      { icon: Database, title: 'Live Backups', text: 'Automatic, secure offsite data redundancy.' }
                     ].map((item, idx) => (
-                      <div key={idx} className="flex gap-3">
-                        <item.icon className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div key={idx} className="flex gap-4 group">
+                        <div className="p-2.5 rounded-xl bg-white/5 group-hover:bg-primary/10 transition-colors duration-300">
+                          <item.icon className="w-5 h-5 text-primary flex-shrink-0" />
+                        </div>
                         <div>
-                          <p className="font-bold text-sm">{item.title}</p>
-                          <p className="text-xs text-gray-500">{item.text}</p>
+                          <p className="font-bold text-white text-sm mb-0.5">{item.title}</p>
+                          <p className="text-xs text-white/40 leading-relaxed">{item.text}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <Button variant="outline" size="lg" className="rounded-full px-10 h-14 text-lg font-bold border-white/20 hover:bg-white/10" asChild>
-                    <a href="#contact">Join the Waitlist</a>
+                  <Button variant="outline" size="lg" className="rounded-2xl px-12 h-16 text-lg font-bold border-white/10 hover:bg-white/5 text-white" asChild>
+                    <a href="#contact">Join the Roadmap</a>
                   </Button>
                 </motion.div>
 
                 <div className="relative">
-                  <div className="bg-primary/5 border border-primary/20 rounded-[2.5rem] p-10 overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-10 opacity-10">
-                      <Bot className="w-64 h-64 text-primary" />
+                  <div className="bg-primary/5 border border-primary/10 rounded-[3rem] p-12 overflow-hidden backdrop-blur-3xl group">
+                    <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity duration-700">
+                      <Bot className="w-80 h-80 text-primary" />
                     </div>
-                    <h4 className="text-2xl font-bold mb-8">Phased Development</h4>
-                    <div className="space-y-6 relative z-10">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold flex-shrink-0">P1</div>
+                    <h4 className="text-3xl font-bold mb-10 text-white">The Regional Roadmap</h4>
+                    <div className="space-y-8 relative z-10">
+                      <div className="flex items-start gap-5">
+                        <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">P1</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Cloud Core & Sync</p>
-                          <p className="text-xs text-gray-400">Migrate offline data to the cloud. Real-time multi-staff coordination across devices.</p>
+                          <p className="text-lg font-bold mb-1 text-white">Secure Cloud Migration</p>
+                          <p className="text-sm text-white/40 leading-relaxed">Sync your local data to our regional servers for encrypted offsite redundancy.</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold flex-shrink-0">P2</div>
+                      <div className="flex items-start gap-5">
+                        <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">P2</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Payment Integrations</p>
-                          <p className="text-xs text-gray-400">Connect Bank, Mobile Money, and EcoCash accounts. Automatically detect, classify, and match payments to students.</p>
+                          <p className="text-lg font-bold mb-1 text-white">Payment Rail Integration</p>
+                          <p className="text-sm text-white/40 leading-relaxed">Auto-reconciliation for EcoCash, Airtel Money, and MTN. Match bank feeds to students in seconds.</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold flex-shrink-0">P3</div>
+                      <div className="flex items-start gap-5">
+                        <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">P3</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">WhatsApp & Chatbot</p>
-                          <p className="text-xs text-gray-400">Parents receive statements via WhatsApp. Manage a school chatbot directly from SchoolFoundry to answer parent queries 24/7.</p>
+                          <p className="text-lg font-bold mb-1 text-white">The WhatsApp Gateway</p>
+                          <p className="text-sm text-white/40 leading-relaxed">Parents request statements and receipts via a secure SchoolFoundry WhatsApp Bot.</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-4 opacity-70">
-                        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-gray-400 font-bold flex-shrink-0">P4</div>
+                      <div className="flex items-start gap-5 opacity-40">
+                        <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 font-bold text-lg flex-shrink-0">P4</div>
                         <div>
-                          <p className="text-lg font-bold mb-1">Parent & Staff Portal</p>
-                          <p className="text-xs text-gray-400">Dedicated login for parents to check balances and download reports without calling the office.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-4 opacity-50">
-                        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-gray-400 font-bold flex-shrink-0">P5</div>
-                        <div>
-                          <p className="text-lg font-bold mb-1">AI Bursar Assistant</p>
-                          <p className="text-xs text-gray-400">Ask a Bot to "Find Grade 5 unpaids" or "Analyze Term 1 trends" and get instant results.</p>
+                          <p className="text-lg font-bold mb-1 text-white">AI Bursar (Alpha)</p>
+                          <p className="text-sm text-white/40 leading-relaxed">Predictive revenue forecasting and automated outlier detection for unpaid accounts.</p>
                         </div>
                       </div>
                     </div>
