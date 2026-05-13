@@ -242,7 +242,7 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Online Cloud */}
+            {/* Cloud Version */}
             <Link href="/online" className="bg-[#0B0D13] hover:bg-white/[0.03] transition-colors cursor-pointer group block">
               <div className="w-full h-80 bg-white/5 overflow-hidden">
                 <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/online-cloud.jpg`} alt="Laptop and phone on desk" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -251,7 +251,7 @@ export default function Home() {
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Globe className="w-[18px] h-[18px] text-primary" />
                 </div>
-                <p className="font-bold text-[15px] text-white mb-1">Online Cloud</p>
+                <p className="font-bold text-[15px] text-white mb-1">Cloud Version</p>
                 <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
                   Manage your school from any device. Our cloud version includes the full SIS suite, gradebooks, attendance, and integrated payments via WhatsApp, Card, and Mobile Money.
                 </p>

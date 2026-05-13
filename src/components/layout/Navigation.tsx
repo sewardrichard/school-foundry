@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Offline Bundle', href: '/offline' },
-  { label: 'Online Cloud', href: '/online' },
+  { label: 'Cloud Version', href: '/online' },
 ];
 
 const MORE_LINKS = [

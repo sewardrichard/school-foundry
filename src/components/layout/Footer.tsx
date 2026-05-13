@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4 text-[13px] font-semibold">
               {[
                 { label: 'Offline Bundle', href: '/offline' },
-                { label: 'Online Cloud', href: '/online' },
+                { label: 'Cloud Version', href: '/online' },
                 { label: 'About Us', href: '/about' },
                 { label: 'Request Demo', href: '/#contact' },
               ].map(({ label, href }) => (
