@@ -70,9 +70,9 @@ export default function Home() {
               </motion.div>
 
               <motion.h1 variants={FADE_UP} className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight text-white mb-6 leading-[0.95]">
-                Modernise your Payments, <br />
+                Your School, <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-orange-400 to-orange-600">
-                  Empower your School.
+                  Modernized.
                 </span>
               </motion.h1>
 
@@ -127,9 +127,9 @@ export default function Home() {
 
               {/* Floating Cards — distributed like a clock */}
               {[
-                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-0 left-1/2 -translate-x-1/2 -translate-y-4', delay: 1.0 },
+                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-0 left-1/2 -translate-x-1/2 translate-y-8', delay: 1.0 },
                 { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-1/2 -right-6 -translate-y-1/2', delay: 1.2 },
-                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-4', delay: 1.4 },
+                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-0 left-1/2 -translate-x-1/2 -translate-y-8', delay: 1.4 },
                 { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'top-1/2 -left-6 -translate-y-1/2', delay: 1.6 },
               ].map((card, i) => (
                 <motion.div
