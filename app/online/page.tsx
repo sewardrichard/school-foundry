@@ -63,8 +63,8 @@ export default function CloudPage() {
               </motion.div>
 
               <motion.h1 variants={FADE_UP} className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-[0.95]">
-                Your School,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-blue-500 to-primary">in your pocket.</span>
+                Any Device,<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-blue-500 to-primary">Zero Data Loss.</span>
               </motion.h1>
 
               <motion.p variants={FADE_UP} className="text-lg text-white/50 mb-8 max-w-xl leading-relaxed font-medium">
