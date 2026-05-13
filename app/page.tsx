@@ -208,7 +208,7 @@ export default function Home() {
 
             {/* Offline Bundle */}
             <Link href="/offline" className="bg-[#0B0D13] hover:bg-white/[0.03] transition-colors cursor-pointer group block">
-              <div className="w-full h-48 bg-white/5 overflow-hidden">
+              <div className="w-full h-80 bg-white/5 overflow-hidden">
                 <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/offline-bundle.jpg`} alt="Thermal receipt printer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-7">
@@ -227,7 +227,7 @@ export default function Home() {
 
             {/* Online Cloud */}
             <Link href="/online" className="bg-[#0B0D13] hover:bg-white/[0.03] transition-colors cursor-pointer group block">
-              <div className="w-full h-48 bg-white/5 overflow-hidden">
+              <div className="w-full h-80 bg-white/5 overflow-hidden">
                 <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/online-cloud.jpg`} alt="Laptop and phone on desk" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-7">
@@ -270,27 +270,27 @@ export default function Home() {
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Finance & Payments</p>
               <p className="text-[13px] text-white/50 leading-[1.6]">
-                Complete financial control. Generate invoices, track arrears, and accept fee payments directly via <strong className="text-white/70">Bank Cards</strong> or <strong className="text-white/70">Mobile Money</strong> (M-Pesa, EcoCash, Momo). The system also generates <strong className="text-white/70">receipts for cash payments</strong> instantly. Built-in reporting ensures your books are always balanced.
+                Complete financial control. Generate invoices, track arrears, and accept fee payments directly via <strong className="text-white/70">Bank Cards</strong> or <strong className="text-white/70">Mobile Money</strong> (EcoCash, Momo, M-Pesa). The system also generates <strong className="text-white/70">receipts for cash payments</strong> instantly. Built-in reporting ensures your books are always balanced.
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-4">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-2 py-1">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                  M-Pesa
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-emerald-500/10 text-emerald-500 rounded px-2 py-1">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke="#064e3b" strokeWidth="2" fill="none"/></svg>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-[#00A651]/10 text-[#00A651] rounded px-2 py-1">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#00A651"/><text x="12" y="16" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold" fontFamily="Arial">E</text></svg>
                   EcoCash
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-yellow-500/10 text-yellow-500 rounded px-2 py-1">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="3" fill="#422006"/></svg>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-[#FFCC08]/10 text-[#FFCC08] rounded px-2 py-1">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#FFCC08"/><text x="12" y="16" textAnchor="middle" fill="#003C71" fontSize="11" fontWeight="bold" fontFamily="Arial">M</text></svg>
                   Momo
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-[#4CAF50]/10 text-[#4CAF50] rounded px-2 py-1">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none"><rect x="1" y="4" width="22" height="16" rx="4" fill="#4CAF50"/><text x="12" y="16" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold" fontFamily="Arial">M</text></svg>
+                  M-Pesa
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-blue-500/10 text-blue-500 rounded px-2 py-1">
                   <CreditCard className="w-3.5 h-3.5" />
                   Bank Cards
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-2 py-1">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-3 18h-4v-1h4v1zm3-3H7V5h10v12z"/></svg>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-[#25D366]/10 text-[#25D366] rounded px-2 py-1">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.23-1.24C8.7 21.56 10.3 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.36 14.29c-.23.64-1.34 1.23-1.85 1.3-.47.07-1.07.1-1.73-.11-.4-.13-.91-.31-1.56-.61-2.74-1.24-4.53-4.01-4.67-4.2-.14-.19-1.12-1.49-1.12-2.85s.71-2.02.96-2.3c.25-.27.55-.34.73-.34.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.78 1.9.85 2.04.07.14.11.29.02.47-.09.18-.14.29-.27.44-.14.16-.29.35-.41.47-.14.14-.28.29-.12.57.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.27.14.43.12.59-.07.16-.19.69-.8.87-1.08.18-.27.37-.23.62-.14.25.09 1.6.76 1.88.89.27.14.45.21.52.32.07.12.07.66-.16 1.3z"/></svg>
                   WhatsApp
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-white/5 text-white/60 rounded px-2 py-1">
