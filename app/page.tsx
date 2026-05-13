@@ -278,7 +278,7 @@ export default function Home() {
               Tools that actually<br /><span className="text-primary">get work done.</span>
             </h3>
             <p className="text-[15px] text-white/50 max-w-[420px] leading-[1.65]">
-              Core features ship with every version. Look for the <span className="text-blue-500 font-medium">Cloud Only</span> tag where the Online version goes further.
+              All features are available on the  <span className="text-blue-500 font-medium">Cloud Version.</span> The FInance and Payments feature has limited capabilities on the offline version as this version does not have internet connection.
             </p>
           </div>
 
@@ -304,16 +304,6 @@ export default function Home() {
               <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-500 rounded px-2 py-0.5 mt-2.5">Offline Version</span>
             </div>
 
-            {/* 100% Offline Resilience — OFFLINE (NEW) */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Cpu className="w-[18px] h-[18px] text-primary" />
-              </div>
-              <p className="font-bold text-[15px] text-white mb-1">100% Offline Resilience</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Built for the most challenging environments. Works **100% without internet**—record students and take payments anywhere.</p>
-              <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-500 rounded px-2 py-0.5 mt-2.5">Offline Version</span>
-            </div>
-
             {/* Finance & Billing — LIMITED (ROW SPAN 2) */}
             <div className="lg:row-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default flex flex-col border-l border-white/10 lg:border-l-0">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -321,28 +311,14 @@ export default function Home() {
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Finance & Payments</p>
               <p className="text-[13px] text-white/50 leading-[1.6] flex-1">
-                Complete financial control. Generate invoices and accept payments via **Cash (with instant receipts)**, **Bank Cards**, or **Mobile Money**.
+                Complete financial control. Generate invoices, track arrears, and accept fee payments directly via <strong>Bank Cards</strong> or <strong>Mobile Money</strong> (Momo, Ecocash). Built-in reporting ensures your books are always balanced.
               </p>
               <div className="flex flex-wrap gap-2 mt-6">
-                 <div className="flex items-center gap-1.5 bg-green-500/10 text-green-500 rounded px-2 py-1">
-                   <div className="w-2 h-2 rounded-full bg-green-500" />
-                   <span className="text-[10px] font-bold">M-Pesa</span>
-                 </div>
-                 <div className="flex items-center gap-1.5 bg-yellow-500/10 text-yellow-500 rounded px-2 py-1">
-                   <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                   <span className="text-[10px] font-bold">Momo</span>
-                 </div>
-                 <div className="flex items-center gap-1.5 bg-blue-500/10 text-blue-500 rounded px-2 py-1">
-                   <div className="w-2 h-2 rounded-full bg-blue-500" />
-                   <span className="text-[10px] font-bold">Ecocash</span>
-                 </div>
-                 <div className="flex items-center gap-1.5 bg-primary/10 text-primary rounded px-2 py-1">
-                   <span className="text-[10px] font-bold">Bank Cards</span>
-                 </div>
-                 <div className="flex items-center gap-1.5 bg-white/10 text-white rounded px-2 py-1">
-                   <span className="text-[10px] font-bold">Cash Receipts</span>
-                 </div>
-                 <span className="text-[10px] font-bold bg-orange-500/10 text-orange-500 rounded px-2 py-0.5 border border-orange-500/20 w-full mt-1">Limited in Offline Version</span>
+                <span className="text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-1.5 py-0.5">WhatsApp</span>
+                <span className="text-[10px] font-bold bg-blue-500/10 text-blue-500 rounded px-1.5 py-0.5">Bank Cards</span>
+                <span className="text-[10px] font-bold bg-yellow-500/10 text-yellow-500 rounded px-1.5 py-0.5">Momo</span>
+                <span className="text-[10px] font-bold bg-emerald-500/10 text-emerald-500 rounded px-1.5 py-0.5">Ecocash</span>
+                <span className="text-[10px] font-bold bg-orange-500/10 text-orange-500 rounded px-2 py-0.5 border border-orange-500/20 w-full mt-1">Limited in Offline Version</span>
               </div>
             </div>
 
@@ -352,7 +328,7 @@ export default function Home() {
                 <Bot className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">AI School Assistant</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Knows everything about your school. Parents can check **account statements** and **pay fees** via M-Pesa, Momo, Ecocash, or Bank Card instantly.</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">A school AI assistant that knows everything about your school. Parents can check <strong>account statements</strong> and <strong>pay fees</strong> via Momo, Ecocash, or Bank Card instantly.</p>
               <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
             </div>
 
