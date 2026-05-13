@@ -21,7 +21,9 @@ import {
   CreditCard,
   Smartphone,
   ClipboardList,
-  ShieldCheck
+  ShieldCheck,
+  WifiOff,
+  Banknote
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -268,15 +270,35 @@ export default function Home() {
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Finance & Payments</p>
               <p className="text-[13px] text-white/50 leading-[1.6]">
-                Complete financial control. Generate invoices, track arrears, and accept fee payments directly via <strong className="text-white/70">Bank Cards</strong> or <strong className="text-white/70">Mobile Money</strong> (Momo, Ecocash). Built-in reporting ensures your books are always balanced.
+                Complete financial control. Generate invoices, track arrears, and accept fee payments directly via <strong className="text-white/70">Bank Cards</strong> or <strong className="text-white/70">Mobile Money</strong> (M-Pesa, EcoCash, Momo). The system also generates <strong className="text-white/70">receipts for cash payments</strong> instantly. Built-in reporting ensures your books are always balanced.
               </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-1.5 py-0.5">WhatsApp</span>
-                <span className="text-[10px] font-bold bg-blue-500/10 text-blue-500 rounded px-1.5 py-0.5">Bank Cards</span>
-                <span className="text-[10px] font-bold bg-yellow-500/10 text-yellow-500 rounded px-1.5 py-0.5">Momo</span>
-                <span className="text-[10px] font-bold bg-emerald-500/10 text-emerald-500 rounded px-1.5 py-0.5">Ecocash</span>
-                <span className="text-[10px] font-bold bg-orange-500/10 text-orange-500 rounded px-2 py-0.5 border border-orange-500/20 w-full mt-1">Limited in Offline Version</span>
+              <div className="flex flex-wrap items-center gap-2 mt-4">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-2 py-1">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                  M-Pesa
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-emerald-500/10 text-emerald-500 rounded px-2 py-1">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke="#064e3b" strokeWidth="2" fill="none"/></svg>
+                  EcoCash
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-yellow-500/10 text-yellow-500 rounded px-2 py-1">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="3" fill="#422006"/></svg>
+                  Momo
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-blue-500/10 text-blue-500 rounded px-2 py-1">
+                  <CreditCard className="w-3.5 h-3.5" />
+                  Bank Cards
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-green-500/10 text-green-500 rounded px-2 py-1">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-3 18h-4v-1h4v1zm3-3H7V5h10v12z"/></svg>
+                  WhatsApp
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-white/5 text-white/60 rounded px-2 py-1">
+                  <Banknote className="w-3.5 h-3.5" />
+                  Cash Receipts
+                </span>
               </div>
+              <span className="inline-block text-[10px] font-bold bg-orange-500/10 text-orange-500 rounded px-2 py-0.5 border border-orange-500/20 mt-3">Limited in Offline Version</span>
             </div>
 
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
@@ -284,11 +306,20 @@ export default function Home() {
                 <Bot className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">AI School Assistant</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">A school AI assistant that knows everything about your school. Parents can check <strong className="text-white/70">account statements</strong> and <strong className="text-white/70">pay fees</strong> via Momo, Ecocash, or Bank Card instantly.</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">A school AI assistant that knows everything about your school. Parents can check <strong className="text-white/70">account statements</strong> and <strong className="text-white/70">pay fees</strong> via M-Pesa, EcoCash, Momo, or Bank Card instantly.</p>
               <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
             </div>
 
-            {/* Row 2: Admissions + Security merged (span 2) + SIS (1) */}
+            {/* Row 2: 100% Offline (1) + Admissions + Security merged (span 2) */}
+            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <WifiOff className="w-[18px] h-[18px] text-primary" />
+              </div>
+              <p className="font-bold text-[15px] text-white mb-1">100% Offline</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">Works without any internet connection. Every feature runs locally on your machine — no cloud dependency, no downtime when the network drops.</p>
+              <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-500 rounded px-2 py-0.5 mt-2.5">Offline Version</span>
+            </div>
+
             <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -386,7 +417,7 @@ export default function Home() {
           {/* Bottom info bar */}
           <div className="mt-6 px-5 py-4 bg-white/[0.03] rounded-xl flex items-center gap-4 text-[13px] text-white/50">
             <Info className="w-4 h-4 text-primary flex-shrink-0" />
-            <span><strong className="text-white/70 font-medium">Full Suite:</strong> SIS, Admissions, Attendance, Gradebook, Finance, Communication Portal, and Staff/Parent Portals are standard. Payments supported via WhatsApp, Card, and Mobile Money.</span>
+            <span><strong className="text-white/70 font-medium">Full Suite:</strong> SIS, Admissions, Attendance, Gradebook, Finance, Communication Portal, and Staff/Parent Portals are standard. Payments supported via WhatsApp, Bank Cards, M-Pesa, EcoCash, and Momo.</span>
           </div>
         </div>
       </section>
