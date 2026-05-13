@@ -3,7 +3,7 @@
 import React from 'react';
 import { Mail, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16 mb-20">
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-8">
-              <Image src="/logo.svg" alt="" width={40} height={40} className="h-10 w-auto" />
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.svg`} alt="" width={40} height={40} className="h-10 w-auto" />
               <span className="font-bold text-2xl tracking-tight text-white">School<span className="font-light text-primary">Foundry</span></span>
             </div>
             <p className="text-white/40 leading-relaxed mb-8 max-sm text-base">

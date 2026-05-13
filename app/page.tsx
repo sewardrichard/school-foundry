@@ -23,7 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
-import Image from 'next/image';
+
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 32 },
@@ -220,7 +220,7 @@ export default function Home() {
               <Link href="/offline" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] overflow-hidden hover:border-primary/50 transition-all duration-500 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative w-full h-56 bg-white/5">
-                  <Image src="/offline-bundle.jpg" alt="Thermal receipt printer" fill className="object-cover" />
+                  <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/offline-bundle.jpg`} alt="Thermal receipt printer" className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <div className="relative z-10 flex-1 p-10">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 shadow-xl">
@@ -242,7 +242,7 @@ export default function Home() {
               <Link href="/online" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] overflow-hidden hover:border-primary/50 transition-all duration-500 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative w-full h-56 bg-white/5">
-                  <Image src="/online-cloud.jpg" alt="Laptop and phone on desk" fill className="object-cover" />
+                  <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/online-cloud.jpg`} alt="Laptop and phone on desk" className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <div className="relative z-10 flex-1 p-10">
                   <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-8 shadow-xl">
