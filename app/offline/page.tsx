@@ -110,7 +110,7 @@ export default function OfflinePage() {
             {/* Thermal Printer — wide */}
             <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors cursor-default">
               <div className="w-full h-48 sm:h-56 bg-[#0B0D13] overflow-hidden">
-                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/bundle-printer.jpg`} alt="High-Speed Thermal Printer" className="w-full h-full object-cover" />
+                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/thermal-printer-stock.png`} alt="High-Speed Thermal Printer" className="w-full h-full object-contain p-4" />
               </div>
               <div className="p-7">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -126,7 +126,7 @@ export default function OfflinePage() {
             {/* Paper Rolls */}
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors cursor-default">
               <div className="w-full h-48 sm:h-56 bg-[#0B0D13] overflow-hidden">
-                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/bundle-paper-rolls.jpg`} alt="10 Thermal Paper Rolls" className="w-full h-full object-cover" />
+                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/thermal-paper-stock.png`} alt="10 Thermal Paper Rolls" className="w-full h-full object-contain p-4" />
               </div>
               <div className="p-7">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -142,7 +142,7 @@ export default function OfflinePage() {
             {/* Software + License — wide */}
             <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors cursor-default">
               <div className="w-full h-48 sm:h-56 bg-[#0B0D13] overflow-hidden">
-                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/bundle-software.jpg`} alt="SchoolFoundry Software with Lifetime License" className="w-full h-full object-cover" />
+                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/welcome-school-foundry.png`} alt="SchoolFoundry Software with Lifetime License" className="w-full h-full object-cover" />
               </div>
               <div className="p-7">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
