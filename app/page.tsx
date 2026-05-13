@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 32 },
@@ -124,12 +125,12 @@ export default function Home() {
                 <SphereCanvas />
               </div>
 
-              {/* Floating Cards */}
+              {/* Floating Cards — distributed like a clock */}
               {[
-                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-10 -left-10', delay: 1.0 },
-                { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-[30%] -right-4', delay: 1.2 },
-                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-16 -left-6', delay: 1.4 },
-                { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'bottom-[35%] -right-8', delay: 1.6 },
+                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-0 left-1/2 -translate-x-1/2 -translate-y-4', delay: 1.0 },
+                { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-1/2 -right-6 -translate-y-1/2', delay: 1.2 },
+                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-4', delay: 1.4 },
+                { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'top-1/2 -left-6 -translate-y-1/2', delay: 1.6 },
               ].map((card, i) => (
                 <motion.div
                   key={i}
@@ -216,18 +217,21 @@ export default function Home() {
             
             {/* Offline Bundle Card */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group relative">
-              <Link href="/offline" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] p-10 hover:border-primary/50 transition-all duration-500 overflow-hidden h-full flex flex-col">
+              <Link href="/offline" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] overflow-hidden hover:border-primary/50 transition-all duration-500 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10 flex-1">
+                <div className="relative w-full h-56 bg-white/5">
+                  <Image src="/offline-bundle.jpg" alt="Thermal receipt printer" fill className="object-cover" />
+                </div>
+                <div className="relative z-10 flex-1 p-10">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 shadow-xl">
                     <Printer className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-3xl font-black text-white mb-4 tracking-tight">The Offline Bundle</h3>
                   <p className="text-white/50 text-lg leading-relaxed mb-8">
-                    Perfect for schools where the internet is a bit "moody." Works 100% offline and comes with its own high-speed receipt printer.
+                    Perfect for schools where the internet is a bit &quot;moody.&quot; Works 100% offline and comes with its own high-speed receipt printer.
                   </p>
                 </div>
-                <div className="relative z-10 mt-auto flex items-center gap-3 text-primary font-bold text-lg group-hover:translate-x-2 transition-transform">
+                <div className="relative z-10 mt-auto px-10 pb-10 flex items-center gap-3 text-primary font-bold text-lg group-hover:translate-x-2 transition-transform">
                   See the Offline Version <ArrowRight className="w-5 h-5" />
                 </div>
               </Link>
@@ -235,9 +239,12 @@ export default function Home() {
 
             {/* Online Cloud Card */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group relative">
-              <Link href="/online" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] p-10 hover:border-primary/50 transition-all duration-500 overflow-hidden h-full flex flex-col">
+              <Link href="/online" className="block bg-white/[0.03] border border-white/10 rounded-[3rem] overflow-hidden hover:border-primary/50 transition-all duration-500 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10 flex-1">
+                <div className="relative w-full h-56 bg-white/5">
+                  <Image src="/online-cloud.jpg" alt="Laptop and phone on desk" fill className="object-cover" />
+                </div>
+                <div className="relative z-10 flex-1 p-10">
                   <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mb-8 shadow-xl">
                     <Globe className="w-8 h-8 text-primary" />
                   </div>
@@ -246,7 +253,7 @@ export default function Home() {
                     Your school, anywhere. Check reports from home, send WhatsApp statements to parents, and let our AI do the heavy lifting.
                   </p>
                 </div>
-                <div className="relative z-10 mt-auto flex items-center gap-3 text-primary font-bold text-lg group-hover:translate-x-2 transition-transform">
+                <div className="relative z-10 mt-auto px-10 pb-10 flex items-center gap-3 text-primary font-bold text-lg group-hover:translate-x-2 transition-transform">
                   Explore the Cloud <ArrowRight className="w-5 h-5" />
                 </div>
               </Link>
