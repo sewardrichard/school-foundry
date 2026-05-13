@@ -322,7 +322,13 @@ export default function Home() {
                   <Bot className="w-[18px] h-[18px] text-primary" />
                 </div>
                 <p className="font-bold text-[15px] text-white mb-1">AI School Assistant</p>
-                <p className="text-[13px] text-white/50 leading-[1.6]">A school AI assistant that knows everything about your school. Parents can check <strong className="text-white/70">account statements</strong> and <strong className="text-white/70">pay fees</strong> via M-Pesa, EcoCash, Momo, or Bank Card instantly.</p>
+                <p className="text-[13px] text-white/50 leading-[1.6]">A school AI assistant that knows everything about your school. Parents can check <strong className="text-white/70">account statements</strong> and <strong className="text-white/70">pay fees</strong> via M-Pesa, EcoCash, Momo, or Bank Card instantly. Communicate with parents and students via <strong className="text-white/70">WhatsApp</strong>.</p>
+                <div className="flex items-center gap-2 mt-3">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold bg-[#25D366]/10 text-[#25D366] rounded px-2 py-1">
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.23-1.24C8.7 21.56 10.3 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.36 14.29c-.23.64-1.34 1.23-1.85 1.3-.47.07-1.07.1-1.73-.11-.4-.13-.91-.31-1.56-.61-2.74-1.24-4.53-4.01-4.67-4.2-.14-.19-1.12-1.49-1.12-2.85s.71-2.02.96-2.3c.25-.27.55-.34.73-.34.18 0 .37 0 .53.01.17.01.4-.06.62.48.23.55.78 1.9.85 2.04.07.14.11.29.02.47-.09.18-.14.29-.27.44-.14.16-.29.35-.41.47-.14.14-.28.29-.12.57.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.27.14.43.12.59-.07.16-.19.69-.8.87-1.08.18-.27.37-.23.62-.14.25.09 1.6.76 1.88.89.27.14.45.21.52.32.07.12.07.66-.16 1.3z"/></svg>
+                    WhatsApp
+                  </span>
+                </div>
                 <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
               </div>
 
@@ -383,26 +389,6 @@ export default function Home() {
                 </div>
                 <p className="font-bold text-[15px] text-white mb-1">Gradebook & Reporting</p>
                 <p className="text-[13px] text-white/50 leading-[1.6]">Digital recording of grades, progress tracking, and automated report card generation.</p>
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
-              </div>
-
-              {/* Communication Portal */}
-              <div className="min-w-[85vw] sm:min-w-[60vw] lg:min-w-[360px] bg-white/[0.03] border border-white/10 rounded-2xl p-7 flex-shrink-0 hover:bg-white/[0.05] transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <MessageSquare className="w-[18px] h-[18px] text-primary" />
-                </div>
-                <p className="font-bold text-[15px] text-white mb-1">Communication Portal</p>
-                <p className="text-[13px] text-white/50 leading-[1.6]">Integrated messaging, SMS alerts, and app notifications for students, parents, and teachers.</p>
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
-              </div>
-
-              {/* Parent & Student Access */}
-              <div className="min-w-[85vw] sm:min-w-[60vw] lg:min-w-[360px] bg-white/[0.03] border border-white/10 rounded-2xl p-7 flex-shrink-0 hover:bg-white/[0.05] transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Smartphone className="w-[18px] h-[18px] text-primary" />
-                </div>
-                <p className="font-bold text-[15px] text-white mb-1">Parent & Student Access</p>
-                <p className="text-[13px] text-white/50 leading-[1.6]">Secure mobile-friendly portals for viewing grades, timetables, attendance, and fee invoices.</p>
                 <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Online Version</span>
               </div>
 
