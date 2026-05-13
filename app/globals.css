@@ -106,3 +106,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}

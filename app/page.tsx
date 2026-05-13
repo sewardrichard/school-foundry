@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
-import SphereCanvas from '@/components/SpherCanvas';
+import DatabaseSphere from '@/components/DatabaseSphere';
 import {
   Printer,
   FileText,
@@ -122,39 +122,39 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right sphere */}
+            {/* Right — 3D Database Sphere with floating glass cards */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="relative hidden lg:flex items-center justify-center h-[650px]"
             >
-              <div className="w-[520px] h-[520px] relative">
-                <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full animate-pulse" />
-                <SphereCanvas />
+              <div className="w-[600px] h-[600px] relative">
+                <DatabaseSphere />
               </div>
 
-              {/* Floating Cards — distributed like a clock */}
+              {/* Floating Glass Cards — clock positions */}
               {[
-                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-0 left-1/2 -translate-x-1/2 translate-y-8', delay: 1.0 },
-                { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-1/2 -right-6 -translate-y-1/2', delay: 1.2 },
-                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-0 left-1/2 -translate-x-1/2 -translate-y-8', delay: 1.4 },
-                { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'top-1/2 -left-6 -translate-y-1/2', delay: 1.6 },
+                { icon: ReceiptText, title: 'Record + Print', text: 'Instant thermal receipts', pos: 'top-0 left-1/2 -translate-x-1/2 translate-y-4', delay: 1.0, floatDelay: '0s' },
+                { icon: FileText, title: 'Analytics', text: 'Visual school-wide data', pos: 'top-1/2 -right-6 -translate-y-1/2', delay: 1.2, floatDelay: '3s' },
+                { icon: Cpu, title: 'Core OS', text: 'Works on any Windows PC', pos: 'bottom-0 left-1/2 -translate-x-1/2 -translate-y-4', delay: 1.4, floatDelay: '4.5s' },
+                { icon: Database, title: 'Local Vault', text: 'Encryption by default', pos: 'top-1/2 -left-6 -translate-y-1/2', delay: 1.6, floatDelay: '1.5s' },
               ].map((card, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: card.delay, duration: 0.8, ease: "easeOut" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className={`absolute ${card.pos} bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-2xl px-6 py-5 shadow-2xl cursor-default group overflow-hidden`}
+                  className={`absolute ${card.pos} cursor-default group`}
+                  style={{ animation: `float 6s ease-in-out ${card.floatDelay} infinite` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="flex items-center gap-3 mb-1.5 relative z-10">
-                    <card.icon className="w-4 h-4 text-primary" />
-                    <p className="text-white font-bold tracking-tight text-sm uppercase">{card.title}</p>
+                  <div className="bg-[rgba(20,20,22,0.5)] backdrop-blur-xl border border-white/[0.08] rounded-2xl px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300 hover:bg-[rgba(30,30,33,0.7)] hover:border-primary/20 hover:scale-[1.02]">
+                    <div className="flex items-center gap-3 mb-1">
+                      <card.icon className="w-4 h-4 text-primary" />
+                      <p className="text-gray-100 font-bold tracking-wide text-sm uppercase">{card.title}</p>
+                    </div>
+                    <p className="text-gray-400 text-sm font-medium pl-7">{card.text}</p>
                   </div>
-                  <p className="text-white/40 text-xs font-medium relative z-10">{card.text}</p>
                 </motion.div>
               ))}
             </motion.div>
