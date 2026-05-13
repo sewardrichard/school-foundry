@@ -153,37 +153,38 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
-            {[
-              {
-                icon: Users,
-                title: 'Student Tracking',
-                desc: 'A digital identity for every child which allows you to track their finances and more. Print student statements, fees and more'
-              },
-              {
-                icon: ReceiptText,
-                title: 'Payment Tracking That Works',
-                desc: 'Say goodbye to manual cash books and missing receipts. Every payment is captured digitally, backed up automatically, and ready for instant reporting whenever you need it.'
-              },
-              {
-                icon: BarChart3,
-                title: 'Lead with Financial Confidence',
-                desc: 'Forget spreadsheets and manual tallies. Get instant answers on collections, outstanding fees, and payment trends. Every decision backed by real-time data, not yesterdayl’s guesswork.'
-              }
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default"
-              >
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-[18px] h-[18px] text-primary" />
-                </div>
-                <p className="font-bold text-[15px] text-white mb-1">{feature.title}</p>
-                <p className="text-[13px] text-white/50 leading-[1.6]">{feature.desc}</p>
+
+            {/* Student Tracking — wide */}
+            <div className="md:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <Users className="w-[18px] h-[18px] text-primary" />
               </div>
-            ))}
+              <p className="font-bold text-[15px] text-white mb-1">Student Tracking</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">A digital identity for every child which allows you to track their finances and more. Print student statements, fees and more</p>
+            </div>
+
+            {/* Payment Tracking */}
+            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <ReceiptText className="w-[18px] h-[18px] text-primary" />
+              </div>
+              <p className="font-bold text-[15px] text-white mb-1">Payment Tracking That Works</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">Say goodbye to manual cash books and missing receipts. Every payment is captured digitally, backed up automatically, and ready for instant reporting whenever you need it.</p>
+            </div>
+
+            {/* Financial Confidence — full width */}
+            <div className="md:col-span-3 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <BarChart3 className="w-[18px] h-[18px] text-primary" />
+              </div>
+              <p className="font-bold text-[15px] text-white mb-1">Lead with Financial Confidence</p>
+              <p className="text-[13px] text-white/50 leading-[1.6] max-w-2xl">Forget spreadsheets and manual tallies. Get instant answers on collections, outstanding fees, and payment trends. Every decision backed by real-time data, not yesterdayl’s guesswork.</p>
+            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* ── Choose Your Journey Gateway ───────────────────── */}
       <section id="journeys" className="py-16 sm:py-24 bg-[#0B0D13] relative overflow-hidden">
@@ -242,7 +243,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── What's Included ─────────────────────────────── */}
+
+      {/* ── What’s Included ───────────────────────────── */}
       <section className="py-16 sm:py-24 bg-[#07090E]">
         <div className="container mx-auto px-6">
           <div className="mb-12">
@@ -257,28 +259,25 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
 
-            {/* Wide card — Student Records */}
-            <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 flex flex-col sm:flex-row sm:items-center gap-6 cursor-default">
-              <div className="flex-1">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Users className="w-[18px] h-[18px] text-primary" />
+            {/* Row 1: Student Records (span 2) + Invoicing (1) */}
+            <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <Users className="w-[18px] h-[18px] text-primary" />
+              </div>
+              <p className="font-bold text-[15px] text-white mb-1">Student Records &amp; Enrollment</p>
+              <p className="text-[13px] text-white/50 leading-[1.6]">A permanent digital file for every learner — from first day to final grade. Add new students in under a minute and never lose a record again.</p>
+              <div className="flex gap-6 mt-3">
+                <div className="flex flex-col">
+                  <span className="text-[22px] font-black text-primary leading-none">90%</span>
+                  <span className="text-[11px] text-white/50 mt-0.5">less paperwork</span>
                 </div>
-                <p className="font-bold text-[15px] text-white mb-1">Student Records &amp; Enrollment</p>
-                <p className="text-[13px] text-white/50 leading-[1.6]">A permanent digital file for every learner — from first day to final grade. Add new students in under a minute and never lose a record again.</p>
-                <div className="flex gap-6 mt-3">
-                  <div className="flex flex-col">
-                    <span className="text-[22px] font-black text-primary leading-none">90%</span>
-                    <span className="text-[11px] text-white/50 mt-0.5">less paperwork</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[22px] font-black text-primary leading-none">1-click</span>
-                    <span className="text-[11px] text-white/50 mt-0.5">backups</span>
-                  </div>
+                <div className="flex flex-col">
+                  <span className="text-[22px] font-black text-primary leading-none">1-click</span>
+                  <span className="text-[11px] text-white/50 mt-0.5">backups</span>
                 </div>
               </div>
             </div>
 
-            {/* Fraud-Proof Invoicing */}
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <ReceiptText className="w-[18px] h-[18px] text-primary" />
@@ -287,25 +286,26 @@ export default function Home() {
               <p className="text-[13px] text-white/50 leading-[1.6]">Automated billing for fees, levies, and extras. Every cent is tracked — no edits, no gaps, no &quot;I forgot to write it down.&quot;</p>
             </div>
 
-            {/* Instant Receipts */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Printer className="w-[18px] h-[18px] text-primary" />
+            {/* Row 2: Receipts + Dashboard merged (span 2) + Staff Permissions (1) */}
+            <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <Printer className="w-[18px] h-[18px] text-primary" />
+                  </div>
+                  <p className="font-bold text-[15px] text-white mb-1">Instant Receipts &amp; Statements</p>
+                  <p className="text-[13px] text-white/50 leading-[1.6]">Print thermal receipts on the spot or generate a full statement for any student in seconds. No digging through books.</p>
+                </div>
+                <div>
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <BarChart3 className="w-[18px] h-[18px] text-primary" />
+                  </div>
+                  <p className="font-bold text-[15px] text-white mb-1">Principal&apos;s Dashboard</p>
+                  <p className="text-[13px] text-white/50 leading-[1.6]">A live view of your school&apos;s health — finances, attendance, and academic progress at a glance, without running a single report manually.</p>
+                </div>
               </div>
-              <p className="font-bold text-[15px] text-white mb-1">Instant Receipts &amp; Statements</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Print thermal receipts on the spot or generate a full statement for any student in seconds. No digging through books.</p>
             </div>
 
-            {/* Principal's Dashboard */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <BarChart3 className="w-[18px] h-[18px] text-primary" />
-              </div>
-              <p className="font-bold text-[15px] text-white mb-1">Principal&apos;s Dashboard</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">A live view of your school&apos;s health — finances, attendance, and academic progress at a glance, without running a single report manually.</p>
-            </div>
-
-            {/* Staff Permissions */}
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <Lock className="w-[18px] h-[18px] text-primary" />
@@ -314,7 +314,7 @@ export default function Home() {
               <p className="text-[13px] text-white/50 leading-[1.6]">Control exactly who can see, edit, or approve. Every action is logged — so accountability isn&apos;t a question, it&apos;s a record.</p>
             </div>
 
-            {/* Academic History */}
+            {/* Row 3: Academic History (1) + AI + Cloud Reports merged (span 2) */}
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <GraduationCap className="w-[18px] h-[18px] text-primary" />
@@ -323,33 +323,34 @@ export default function Home() {
               <p className="text-[13px] text-white/50 leading-[1.6]">Track grades, achievements, and progression for every learner across every term. A complete picture, always available.</p>
             </div>
 
-            {/* AI Parent Assistant — Cloud Only */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Bot className="w-[18px] h-[18px] text-primary" />
+            <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <Bot className="w-[18px] h-[18px] text-primary" />
+                  </div>
+                  <p className="font-bold text-[15px] text-white mb-1">AI Parent Assistant</p>
+                  <p className="text-[13px] text-white/50 leading-[1.6]">Parents ask questions, the AI answers. Statement requests, fee balances, and school info handled automatically — without pulling your staff away.</p>
+                  <span className="inline-block text-[10px] font-medium tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Cloud only</span>
+                </div>
+                <div>
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <MonitorSmartphone className="w-[18px] h-[18px] text-primary" />
+                  </div>
+                  <p className="font-bold text-[15px] text-white mb-1">Live Cloud Reports</p>
+                  <p className="text-[13px] text-white/50 leading-[1.6]">Access real-time school data from any device, anywhere. Check term performance or financial summaries without setting foot in the office.</p>
+                  <span className="inline-block text-[10px] font-medium tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Cloud only</span>
+                </div>
               </div>
-              <p className="font-bold text-[15px] text-white mb-1">AI Parent Assistant</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Parents ask questions, the AI answers. Statement requests, fee balances, and school info handled automatically — without pulling your staff away.</p>
-              <span className="inline-block text-[10px] font-medium tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Cloud only</span>
             </div>
 
-            {/* Live Cloud Reports — Cloud Only */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <MonitorSmartphone className="w-[18px] h-[18px] text-primary" />
-              </div>
-              <p className="font-bold text-[15px] text-white mb-1">Live Cloud Reports</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Access real-time school data from any device, anywhere. Check term performance or financial summaries without setting foot in the office.</p>
-              <span className="inline-block text-[10px] font-medium tracking-wider uppercase bg-blue-500/10 text-blue-500 rounded px-2 py-0.5 mt-2.5">Cloud only</span>
-            </div>
-
-            {/* Bank-Level Security */}
-            <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
+            {/* Row 4: Bank-Level Security — full width */}
+            <div className="sm:col-span-2 lg:col-span-3 bg-[#07090E] hover:bg-white/[0.03] transition-colors p-7 cursor-default">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <Database className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Bank-Level Security &amp; Backups</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">Encrypted by default. One-click backups mean your data is always safe — whether the power cuts or the laptop walks away.</p>
+              <p className="text-[13px] text-white/50 leading-[1.6] max-w-2xl">Encrypted by default. One-click backups mean your data is always safe — whether the power cuts or the laptop walks away.</p>
             </div>
 
           </div>
@@ -361,6 +362,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* ── Contact Form / CTA ───────────────────────────── */}
       <section id="contact" className="py-16 sm:py-24 bg-[#07090E]">
