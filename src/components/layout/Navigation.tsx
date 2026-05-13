@@ -33,7 +33,7 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    const onResize = () => { if (window.innerWidth >= 1024) setMenuOpen(false); };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
@@ -62,7 +62,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-10 text-[13px] uppercase tracking-widest font-semibold">
+        <div className="hidden lg:flex items-center gap-10 text-[13px] uppercase tracking-widest font-semibold">
           {NAV_LINKS.map(({ label, href }) => {
             const isAnchor = href.startsWith('/#');
             const isActive = pathname === '/' && isAnchor ? false : pathname === href;
@@ -117,7 +117,7 @@ export default function Navigation() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(o => !o)}
-          className={`md:hidden p-2.5 rounded-xl transition-all ${scrolled ? 'text-white bg-white/5 hover:bg-white/10' : 'text-white hover:bg-white/10'}`}
+          className={`lg:hidden p-2.5 rounded-xl transition-all ${scrolled ? 'text-white bg-white/5 hover:bg-white/10' : 'text-white hover:bg-white/10'}`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -131,7 +131,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0A0D14]/98 backdrop-blur-2xl border-b border-white/5 overflow-hidden"
+            className="lg:hidden bg-[#0A0D14]/98 backdrop-blur-2xl border-b border-white/5 overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-2 max-h-[80vh] overflow-y-auto">
               {NAV_LINKS.map(({ label, href }) => (
