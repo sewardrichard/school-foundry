@@ -251,7 +251,10 @@ export default function Home() {
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Globe className="w-[18px] h-[18px] text-primary" />
                 </div>
-                <p className="font-bold text-[15px] text-white mb-1">Cloud Version</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="font-bold text-[15px] text-white">Cloud Version</p>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
                 <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
                   Manage your school from any device. Our cloud version includes the full SIS suite, gradebooks, attendance, and integrated payments via WhatsApp, Card, and Mobile Money.
                 </p>
