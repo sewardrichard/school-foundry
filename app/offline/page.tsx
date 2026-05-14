@@ -110,7 +110,7 @@ export default function OfflinePage() {
             {/* Thermal Printer — wide */}
             <div className="sm:col-span-2 bg-[#07090E] hover:bg-white/[0.03] transition-colors cursor-default">
               <div className="w-full h-48 sm:h-56 bg-[#0B0D13] overflow-hidden">
-                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/thermal-printer-stock.png`} alt="High-Speed Thermal Printer" className="w-full h-full object-contain p-4" />
+                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/bundle-printer.jpg`} alt="High-Speed Thermal Printer" className="w-full h-full object-cover" />
               </div>
               <div className="p-7">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -126,7 +126,7 @@ export default function OfflinePage() {
             {/* Paper Rolls */}
             <div className="bg-[#07090E] hover:bg-white/[0.03] transition-colors cursor-default">
               <div className="w-full h-48 sm:h-56 bg-[#0B0D13] overflow-hidden">
-                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/thermal-paper-stock.png`} alt="10 Thermal Paper Rolls" className="w-full h-full object-contain p-4" />
+                <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/bundle-paper.jpg`} alt="10 Thermal Paper Rolls" className="w-full h-full object-cover" />
               </div>
               <div className="p-7">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-4">

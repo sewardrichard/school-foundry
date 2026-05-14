@@ -40,17 +40,17 @@ export default function CloudPage() {
   return (
     <div className="min-h-screen bg-[#07090E] selection:bg-primary/30 selection:text-white overflow-x-hidden">
 
-      {/* ── Spacer for fixed nav ── */}
-      <div className="h-[72px] sm:h-[80px]" />
-
-      {/* ── Sticky Coming Soon Banner (below nav) ── */}
-      <div className="sticky top-[60px] sm:top-[68px] z-40 bg-gradient-to-r from-blue-600 via-blue-500 to-primary py-2.5 text-center">
+      {/* ── Fixed Coming Soon Banner (sticks below nav) ── */}
+      <div className="fixed top-[60px] sm:top-[68px] left-0 right-0 z-40 bg-gradient-to-r from-blue-600 via-blue-500 to-primary py-2.5 text-center">
         <div className="container mx-auto px-4 flex items-center justify-center gap-2 text-white text-sm font-bold">
           <Construction className="w-4 h-4" />
           <span>Cloud Version — Coming Soon</span>
           <span className="hidden sm:inline text-white/70 font-medium">· Join the waitlist to get early access</span>
         </div>
       </div>
+
+      {/* ── Spacer for fixed nav + banner ── */}
+      <div className="h-[108px] sm:h-[116px]" />
 
       {/* ── Hero Section ── */}
       <section className="relative pt-12 pb-16 sm:pt-16 sm:pb-24 overflow-hidden">
