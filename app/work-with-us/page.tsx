@@ -92,7 +92,10 @@ export default function WorkWithUsPage() {
           </div>
 
           <p className="text-[11px] text-white/25 mt-4 text-right">
-            Sources: UNESCO GEM Report 2022, World Bank Education Finance Watch 2023, GAID 2023
+            Sources:{' '}
+            <a href="https://www.unesco.org/gem-report/en/2022-out-school" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/40 transition-colors">UNESCO GEM Report 2022</a>,{' '}
+            <a href="https://thedocs.worldbank.org/en/doc/70f42d39bab0a849b36b2de4208a35e1-0140022024/original/EFW2023-Africa-edition.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/40 transition-colors">World Bank EFW 2023</a>,{' '}
+            <a href="https://www.gaid.org/publications/africa/nearly-100-million-children-in-africa-out-of-school-and-450-000-schools-without-electricity" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/40 transition-colors">GAID 2023</a>
           </p>
         </div>
       </section>
@@ -125,7 +128,7 @@ export default function WorkWithUsPage() {
                   Zimbabwe faces similar challenges with <strong className="text-white/80">over 9,500 schools</strong> operating without standardized digital record-keeping. District offices rely on physical file submissions from individual schools, creating weeks-long delays in reporting.
                 </p>
                 <p>
-                  Government spending on education across Africa remains at <strong className="text-white/80">just 3.7% of GDP</strong> — below the recommended 4% benchmark. Aid to education in Sub-Saharan Africa <strong className="text-white/80">fell 23%</strong> from 2020 to 2021.
+                  <a href="https://thedocs.worldbank.org/en/doc/70f42d39bab0a849b36b2de4208a35e1-0140022024/original/EFW2023-Africa-edition.pdf" target="_blank" rel="noopener noreferrer" className="underline decoration-white/20 hover:decoration-white/50 transition-colors">Government spending on education</a> across Africa remains at <strong className="text-white/80">just 3.7% of GDP</strong> — below the recommended 4% benchmark. Aid to education in Sub-Saharan Africa <strong className="text-white/80">fell 23%</strong> from 2020 to 2021.
                 </p>
               </div>
             </div>
@@ -143,7 +146,7 @@ export default function WorkWithUsPage() {
               Every partner <span className="text-primary">unlocks a school.</span>
             </h3>
             <p className="text-[15px] text-white/50 leading-[1.65]">
-              A single SchoolFoundry deployment — printer, paper, and software — costs less than $200 and digitizes an entire school permanently. Here's how different partners make it happen.
+              A full SchoolFoundry deployment — printer, paper, and software — starts at $500 ($400 without the printer) and digitizes an entire school permanently. Here's how different partners make it happen.
             </p>
           </div>
 
@@ -156,11 +159,11 @@ export default function WorkWithUsPage() {
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Donors & Sponsors</p>
               <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
-                Fund the digitization of schools that can't afford it themselves. A single $200 sponsorship covers the full hardware + software bundle for one school — permanently.
+                Fund the digitization of schools that can't afford it themselves. A $500 sponsorship covers the full hardware + software bundle for one school — permanently. $400 if the school already has a printer.
               </p>
               <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
                 <School className="w-3.5 h-3.5" />
-                <span>1 donor = 1 school digitized</span>
+                <span>$500 = 1 school digitized</span>
               </div>
             </div>
 
@@ -228,7 +231,7 @@ export default function WorkWithUsPage() {
         </div>
       </section>
 
-      {/* ── What $200 Buys — Impact Visual ── */}
+      {/* ── What $500 Buys — Impact Visual ── */}
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
@@ -237,7 +240,7 @@ export default function WorkWithUsPage() {
             <div className="bg-[#0B0D13] overflow-hidden">
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/offline-bundle.jpg`}
-                alt="SchoolFoundry deployment bundle — what $200 buys"
+                alt="SchoolFoundry deployment bundle — what $500 buys"
                 className="w-full h-full object-cover min-h-[300px]"
               />
             </div>
@@ -245,9 +248,10 @@ export default function WorkWithUsPage() {
             {/* Right — impact breakdown */}
             <div className="bg-[#07090E] p-7 sm:p-10 flex flex-col justify-center cursor-default">
               <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-4">Impact per dollar</p>
-              <h3 className="text-[24px] sm:text-[28px] font-black text-white leading-[1.15] mb-6 tracking-tight">
-                What <span className="text-primary">$200</span> does for a school.
+              <h3 className="text-[24px] sm:text-[28px] font-black text-white leading-[1.15] mb-2 tracking-tight">
+                What <span className="text-primary">$500</span> does for a school.
               </h3>
+              <p className="text-[13px] text-white/35 mb-6">$400 if the school already has a printer</p>
               <div className="space-y-5">
                 {[
                   { stat: '1', desc: 'thermal receipt printer — no ink, ever' },
@@ -287,7 +291,7 @@ export default function WorkWithUsPage() {
                 Ministries of Education across Zambia, Zimbabwe, and the wider region face the same challenge: thousands of schools still run on paper-based systems with no visibility into enrolment numbers, fee collection, or academic performance at a district or national level.
               </p>
               <p className="text-[15px] text-white/60 leading-[1.8] mb-6">
-                UNESCO estimates that <strong className="text-white/80">median annual education spending per capita in Africa has stagnated at around $100</strong> for the past decade. SchoolFoundry's one-time deployment cost of under $200 per school is designed to fit within these constrained budgets.
+                <a href="https://thedocs.worldbank.org/en/doc/70f42d39bab0a849b36b2de4208a35e1-0140022024/original/EFW2023-Africa-edition.pdf" target="_blank" rel="noopener noreferrer" className="underline">UNESCO estimates</a> that <strong className="text-white/80">median annual education spending per capita in Africa has stagnated at around $100</strong> for the past decade. SchoolFoundry's one-time deployment cost of $500 per school ($400 without the printer) is designed to fit within these constrained budgets.
               </p>
               <p className="text-[15px] text-white/60 leading-[1.8]">
                 We're ready to work with your department to pilot, customize, and roll out SchoolFoundry as part of your national education digitization strategy.

@@ -11,11 +11,11 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Offline Bundle', href: '/offline' },
   { label: 'Cloud Version', href: '/online' },
+  { label: 'Work With Us', href: '/work-with-us' },
+  { label: 'About Us', href: '/about' },
 ];
 
 const MORE_LINKS = [
-  { label: 'About Us', href: '/about', flag: '' },
-  { label: 'Work With Us', href: '/work-with-us', flag: '' },
   { label: 'Zambia Campaign', href: '/campaigns/zambia', flag: '🇿🇲' },
   { label: 'Zimbabwe Campaign', href: '/campaigns/zimbabwe', flag: '🇿🇼' },
   { label: 'Documentation', href: '/docs', flag: '📖' },
