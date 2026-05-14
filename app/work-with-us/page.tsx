@@ -10,6 +10,13 @@ import {
   ArrowRight,
   CheckCircle2,
   TrendingUp,
+  School,
+  Wifi,
+  WifiOff,
+  Users,
+  DollarSign,
+  Globe,
+  BarChart3,
 } from 'lucide-react';
 
 const FADE_UP = {
@@ -22,6 +29,13 @@ const STAGGER = {
   visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
 };
 
+const STATS = [
+  { value: '450K+', label: 'Schools in Africa without electricity', icon: WifiOff },
+  { value: '98M', label: 'Children out of school in Sub-Saharan Africa', icon: Users },
+  { value: '$4.5B', label: 'Education aid to Sub-Saharan Africa (2021)', icon: DollarSign },
+  { value: '70%+', label: 'Rural learners without reliable internet', icon: Wifi },
+];
+
 export default function WorkWithUsPage() {
   return (
     <div className="min-h-screen bg-[#07090E] selection:bg-primary/30 selection:text-white overflow-x-hidden">
@@ -33,24 +47,104 @@ export default function WorkWithUsPage() {
           <motion.div initial="hidden" animate="visible" variants={STAGGER} className="text-center max-w-3xl mx-auto">
             <motion.span variants={FADE_UP} className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.3em] mb-6 block">Partnerships</motion.span>
             <motion.h1 variants={FADE_UP} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
-              Work with<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">SchoolFoundry.</span>
+              The problem is<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">massive.</span>
+              {' '}So is the<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-primary">opportunity.</span>
             </motion.h1>
-            <motion.p variants={FADE_UP} className="text-lg sm:text-xl text-white/50 font-medium leading-relaxed">
-              We partner with donors, sponsors, NGOs, governments, and development agencies that believe education infrastructure is the foundation of community development.
+            <motion.p variants={FADE_UP} className="text-lg sm:text-xl text-white/50 font-medium leading-relaxed max-w-2xl mx-auto">
+              Hundreds of thousands of schools across Southern Africa still run on paper ledgers and hand-written receipts. We're building the tools to change that — and we need partners who share the mission.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Partnerships ── */}
+      {/* ── The Numbers — Stats Grid ── */}
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="mb-12">
-            <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-3">Who we work with</p>
-            <h3 className="text-[32px] sm:text-[38px] font-black text-white leading-[1.1] mb-4 max-w-[520px] tracking-tight">
-              Partners who share <span className="text-primary">our mission.</span>
+            <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-3">The challenge</p>
+            <h3 className="text-[32px] sm:text-[38px] font-black text-white leading-[1.1] mb-4 max-w-[600px] tracking-tight">
+              Why this <span className="text-primary">matters now.</span>
             </h3>
+            <p className="text-[15px] text-white/50 max-w-[600px] leading-[1.65]">
+              Education infrastructure in Sub-Saharan Africa is underfunded and overwhelmingly paper-based. These aren't abstract numbers — they represent real schools where bursars write receipts by hand, where student records are stored in filing cabinets, and where a single fire or flood can erase years of data.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+            {STATS.map(({ value, label, icon: Icon }, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-[#07090E] p-6 sm:p-8 text-center cursor-default hover:bg-white/[0.03] transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <p className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight">{value}</p>
+                <p className="text-[12px] sm:text-[13px] text-white/40 font-medium leading-snug">{label}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="text-[11px] text-white/25 mt-4 text-right">
+            Sources: UNESCO GEM Report 2022, World Bank Education Finance Watch 2023, GAID 2023
+          </p>
+        </div>
+      </section>
+
+      {/* ── The Problem — Image + Text ── */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+
+            {/* Image side */}
+            <div className="bg-[#0B0D13] overflow-hidden">
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/file-cabinet.jpg`}
+                alt="Paper-based school filing systems in Southern Africa"
+                className="w-full h-full object-cover min-h-[300px]"
+              />
+            </div>
+
+            {/* Text side */}
+            <div className="bg-[#07090E] p-7 sm:p-10 flex flex-col justify-center cursor-default">
+              <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-4">The reality on the ground</p>
+              <h3 className="text-[24px] sm:text-[28px] font-black text-white leading-[1.15] mb-6 tracking-tight">
+                Paper ledgers. Lost receipts. Zero visibility.
+              </h3>
+              <div className="space-y-4 text-[14px] text-white/55 leading-[1.75]">
+                <p>
+                  In Zambia alone, the Ministry of Education oversees <strong className="text-white/80">over 12,000 schools</strong> — most of which still track student records, fee payments, and attendance in hand-written ledgers.
+                </p>
+                <p>
+                  Zimbabwe faces similar challenges with <strong className="text-white/80">over 9,500 schools</strong> operating without standardized digital record-keeping. District offices rely on physical file submissions from individual schools, creating weeks-long delays in reporting.
+                </p>
+                <p>
+                  Government spending on education across Africa remains at <strong className="text-white/80">just 3.7% of GDP</strong> — below the recommended 4% benchmark. Aid to education in Sub-Saharan Africa <strong className="text-white/80">fell 23%</strong> from 2020 to 2021.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── How Partners Help — Solution Section ── */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="mb-12 text-center max-w-2xl mx-auto">
+            <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-3">How you can help</p>
+            <h3 className="text-[32px] sm:text-[38px] font-black text-white leading-[1.1] mb-4 tracking-tight">
+              Every partner <span className="text-primary">unlocks a school.</span>
+            </h3>
+            <p className="text-[15px] text-white/50 leading-[1.65]">
+              A single SchoolFoundry deployment — printer, paper, and software — costs less than $200 and digitizes an entire school permanently. Here's how different partners make it happen.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
@@ -61,9 +155,13 @@ export default function WorkWithUsPage() {
                 <Heart className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Donors & Sponsors</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">
-                Fund the digitization of schools that can't afford it themselves. Your sponsorship covers hardware, software, and training — giving disadvantaged schools the same tools as private institutions. Every dollar is tracked and reported.
+              <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
+                Fund the digitization of schools that can't afford it themselves. A single $200 sponsorship covers the full hardware + software bundle for one school — permanently.
               </p>
+              <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
+                <School className="w-3.5 h-3.5" />
+                <span>1 donor = 1 school digitized</span>
+              </div>
             </div>
 
             {/* NGOs & Development Agencies */}
@@ -72,9 +170,13 @@ export default function WorkWithUsPage() {
                 <Handshake className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">NGOs & Development Agencies</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">
-                Partner with us to digitize schools within your existing education programs. We provide the technology; you provide the reach. Our system plugs directly into community development initiatives with measurable outcomes.
+              <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
+                Plug SchoolFoundry into your existing education programs. We provide the tech; you provide the reach. Deployments include training and measurable impact data for your reporting.
               </p>
+              <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>Built-in impact metrics for donors</span>
+              </div>
             </div>
 
             {/* Grant Funding */}
@@ -83,9 +185,13 @@ export default function WorkWithUsPage() {
                 <TrendingUp className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Grant Funding</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">
-                We actively seek grants to cover deployment costs for disadvantaged schools — schools that have the infrastructure (a PC, electricity) but not the funds to digitize. If you manage a grant program focused on education or technology, let's talk.
+              <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
+                We target grants to cover deployment costs for disadvantaged schools — schools that have the infrastructure (a PC, electricity) but not the funds to digitize. If you manage an education or tech grant program, let's talk.
               </p>
+              <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
+                <Globe className="w-3.5 h-3.5" />
+                <span>$4.5B in education aid flows to SSA yearly</span>
+              </div>
             </div>
 
             {/* Governments (wide) */}
@@ -94,9 +200,13 @@ export default function WorkWithUsPage() {
                 <Landmark className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Government & Public Sector</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">
-                We work with government agencies and public institutions to bring digital school management into the public education system. Our tools can be deployed at scale across district or national networks, providing ministries with real-time visibility into school operations across the country.
+              <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
+                Deploy SchoolFoundry at district or national scale to bring real-time visibility into school operations. Our offline-first architecture means it works in rural areas where cloud-only solutions fail — reaching all 12,000+ schools in Zambia or 9,500+ in Zimbabwe.
               </p>
+              <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
+                <School className="w-3.5 h-3.5" />
+                <span>Scalable from 10 schools to 10,000+</span>
+              </div>
             </div>
 
             {/* Investors */}
@@ -105,9 +215,54 @@ export default function WorkWithUsPage() {
                 <Building2 className="w-[18px] h-[18px] text-primary" />
               </div>
               <p className="font-bold text-[15px] text-white mb-1">Investors</p>
-              <p className="text-[13px] text-white/50 leading-[1.6]">
-                EdTech in Sub-Saharan Africa is a growing market with real demand. We're building sustainable infrastructure — not chasing hype. If you're looking for impact-driven investment in African education, we'd love to connect.
+              <p className="text-[13px] text-white/50 leading-[1.6] mb-4">
+                African EdTech attracted over $200M in funding between 2019–2023 — but most targets urban, internet-connected markets. SchoolFoundry serves the offline majority. Impact-driven, sustainable, and built on real demand.
               </p>
+              <div className="flex items-center gap-2 text-[12px] text-primary font-bold">
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>$200M+ invested in African EdTech (2019–2023)</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── What $200 Buys — Impact Visual ── */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+
+            {/* Left — the bundle image */}
+            <div className="bg-[#0B0D13] overflow-hidden">
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/offline-bundle.jpg`}
+                alt="SchoolFoundry deployment bundle — what $200 buys"
+                className="w-full h-full object-cover min-h-[300px]"
+              />
+            </div>
+
+            {/* Right — impact breakdown */}
+            <div className="bg-[#07090E] p-7 sm:p-10 flex flex-col justify-center cursor-default">
+              <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-primary mb-4">Impact per dollar</p>
+              <h3 className="text-[24px] sm:text-[28px] font-black text-white leading-[1.15] mb-6 tracking-tight">
+                What <span className="text-primary">$200</span> does for a school.
+              </h3>
+              <div className="space-y-5">
+                {[
+                  { stat: '1', desc: 'thermal receipt printer — no ink, ever' },
+                  { stat: '10', desc: 'starter paper rolls for Day 1' },
+                  { stat: '1', desc: 'lifetime software license — no monthly fees' },
+                  { stat: '∞', desc: 'students tracked, receipts printed, reports generated' },
+                  { stat: '2s', desc: 'to print a professional receipt' },
+                  { stat: '0', desc: 'internet required to operate' },
+                ].map(({ stat, desc }, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <span className="text-2xl font-black text-primary min-w-[48px] text-right">{stat}</span>
+                    <p className="text-[14px] text-white/55 font-medium pt-1">{desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
@@ -132,7 +287,7 @@ export default function WorkWithUsPage() {
                 Ministries of Education across Zambia, Zimbabwe, and the wider region face the same challenge: thousands of schools still run on paper-based systems with no visibility into enrolment numbers, fee collection, or academic performance at a district or national level.
               </p>
               <p className="text-[15px] text-white/60 leading-[1.8] mb-6">
-                SchoolFoundry can change that. Our platform is designed to be deployed at scale — from a single community school to an entire province. Because it works offline, it reaches schools that cloud-only solutions simply can't.
+                UNESCO estimates that <strong className="text-white/80">median annual education spending per capita in Africa has stagnated at around $100</strong> for the past decade. SchoolFoundry's one-time deployment cost of under $200 per school is designed to fit within these constrained budgets.
               </p>
               <p className="text-[15px] text-white/60 leading-[1.8]">
                 We're ready to work with your department to pilot, customize, and roll out SchoolFoundry as part of your national education digitization strategy.

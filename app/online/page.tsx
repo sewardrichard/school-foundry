@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   Globe,
@@ -37,11 +37,19 @@ const STAGGER = {
 };
 
 export default function CloudPage() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#07090E] selection:bg-primary/30 selection:text-white overflow-x-hidden">
 
-      {/* ── Fixed Coming Soon Banner (sticks below nav) ── */}
-      <div className="fixed top-[60px] sm:top-[68px] left-0 right-0 z-40 bg-gradient-to-r from-blue-600 via-blue-500 to-primary py-2.5 text-center">
+      {/* ── Fixed Coming Soon Banner (follows nav — starts lower, moves up on scroll) ── */}
+      <div className={`fixed left-0 right-0 z-40 bg-gradient-to-r from-blue-600 via-blue-500 to-primary py-2.5 text-center transition-all duration-500 ease-in-out ${scrolled ? 'top-[60px] sm:top-[56px]' : 'top-[84px] sm:top-[96px]'}`}>
         <div className="container mx-auto px-4 flex items-center justify-center gap-2 text-white text-sm font-bold">
           <Construction className="w-4 h-4" />
           <span>Cloud Version — Coming Soon</span>
@@ -50,7 +58,7 @@ export default function CloudPage() {
       </div>
 
       {/* ── Spacer for fixed nav + banner ── */}
-      <div className="h-[108px] sm:h-[116px]" />
+      <div className="h-[128px] sm:h-[140px]" />
 
       {/* ── Hero Section ── */}
       <section className="relative pt-12 pb-16 sm:pt-16 sm:pb-24 overflow-hidden">
